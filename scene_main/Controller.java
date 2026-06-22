@@ -1,11 +1,16 @@
 package scene_main;
 
+import java.io.File;
 import java.net.URL;
+import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class Controller {
 
@@ -16,10 +21,10 @@ public class Controller {
     private URL location;
 
     @FXML
-    private Label label_status;
+    private ListView<String> listview;
 
     @FXML
-    private ListView<?> listview;
+    private Label status;
 
     @FXML
     void on_create(ActionEvent event) {
@@ -32,8 +37,25 @@ public class Controller {
     }
 
     @FXML
-    void on_read(ActionEvent event) {
+    void on_read(ActionEvent event) throws Exception{
+        var stage = (Stage) status.getScene().getWindow();
+        var file_chooser = new FileChooser();
+        var selected = file_chooser.showOpenDialog(stage);
 
+        var data = new ArrayList<String>();
+        // var selected = new file(selected.toURI());
+        
+
+        for (var line: Files.readAllLines(selected.toPath())){
+            data.add(line);
+        }
+        listview.getItems().addAll(data);
+
+        // for(var item: data){
+        //     System.out.println(item);
+        // }
+        
+        
     }
 
     @FXML
@@ -43,8 +65,12 @@ public class Controller {
 
     @FXML
     void initialize() {
-        assert label_status != null : "fx:id=\"label_status\" was not injected: check your FXML file 'View.fxml'.";
-        assert listview != null : "fx:id=\"listview\" was not injected: check your FXML file 'View.fxml'.";
+        // var data = new ArrayList<String>();
+        // data.add("Apple");
+        // data.add("Banana");
+        // data.add("Orange");
+
+        // listview.getItems().addAll(data);
 
     }
 

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scene_main.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="218.0" layoutY="39.0" text="MINI Project 5" textFill="#2b50b7">
          <font>
@@ -21,12 +21,12 @@
          </font></Label>
       <ImageView fitHeight="91.0" fitWidth="92.0" layoutX="21.0" layoutY="23.0">
          <image>
-            <Image url="@asset/gtr_logo.jpg" />
+            <Image url="@../asset/itc_logo.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="103.0" fitWidth="116.0" layoutX="478.0" layoutY="23.0">
          <image>
-            <Image url="@asset/itc_logo.jpg" />
+            <Image url="@../asset/gtr_logo.jpg" />
          </image>
       </ImageView>
       <ListView fx:id="listview" layoutX="142.0" layoutY="138.0" prefHeight="359.0" prefWidth="315.0" />
@@ -38,7 +38,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Label fx:id="label_status" layoutX="486.0" layoutY="553.0" prefHeight="18.0" prefWidth="82.0" text="Status :">
+      <Label fx:id="status" layoutX="486.0" layoutY="553.0" prefHeight="18.0" prefWidth="82.0" text="Status :">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
