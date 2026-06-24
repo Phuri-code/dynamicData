@@ -1,12 +1,14 @@
 package scene_main;
 
-import java.io.File;
+
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.FileChooser;
@@ -27,7 +29,21 @@ public class Controller {
     private Label status;
 
     @FXML
-    void on_create(ActionEvent event) {
+    void on_create(ActionEvent event) throws Exception {
+
+        var stage = (Stage) status.getScene().getWindow();
+        
+        var view_create = getClass().getResource("../scene_create/View.fxml");
+        var controller_cerate = new scene_create.Controller();
+
+        var loader = new FXMLLoader();
+        loader.setLocation(view_create);
+        loader.setController(controller_cerate);
+
+        var scene = new Scene(loader.load());
+
+        stage.setScene(scene);
+        stage.show();
 
     }
 
