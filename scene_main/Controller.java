@@ -103,17 +103,42 @@ public class Controller {
     }
 
     @FXML
-    void on_update(ActionEvent event) {
+    void on_update(ActionEvent event) throws Exception {
+         var selected_index = listview.getSelectionModel().getSelectedIndex();
+        // System.out.println("seleted" + selected_index);
+        if(selected_index == -1){
+            return;
+        }
+
+        Global.selected_Index = selected_index;
+
+        var node = (Node) event.getSource();
+        var stage = (Stage) node.getScene().getWindow();
+        
+        var view_update = getClass().getResource("../scene_update/View.fxml");
+        var controller_update = new scene_update.Controller();
+
+        var loader = new FXMLLoader();
+        loader.setLocation(view_update);
+        loader.setController(controller_update);
+
+        var scene = new Scene(loader.load());
+        stage.setScene(scene);
+        stage.show();
 
     }
 
     @FXML
     void initialize() {
+        
+
+
+
+        listview.getItems().addAll(Global.list);
         // var data = new ArrayList<String>();
         // data.add("Apple");
         // data.add("Banana");
         // data.add("Orange");
-        listview.getItems().addAll(Global.list);
         // listview.getItems().addAll(data);
 
     }
