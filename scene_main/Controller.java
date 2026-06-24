@@ -54,7 +54,20 @@ public class Controller {
 
     @FXML
     void on_delete(ActionEvent event) throws Exception {
-       var node = (Node) event.getSource();
+
+        // var selecte = listview.getSelectionModel().getSelectedItem();
+        // System.out.println("seleted" + selecte);
+
+
+        var selected_index = listview.getSelectionModel().getSelectedIndex();
+        System.out.println("seleted" + selected_index);
+        if(selected_index == -1){
+            return;
+        }
+
+        Global.selected_Index = selected_index;
+
+        var node = (Node) event.getSource();
         var stage = (Stage) node.getScene().getWindow();
         
         var view_delete = getClass().getResource("../scene_delete/View.fxml");
