@@ -2,9 +2,12 @@ package scene_create;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import global.Global;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -27,7 +30,11 @@ public class Controller {
     @FXML
     void on_saveCreate(ActionEvent event) throws Exception{
 
-         var stage = (Stage) saveCreate.getScene().getWindow();
+        var data = input.getText();
+        Global.list.add(data);
+
+         var node = (Node) event.getSource();
+        var stage = (Stage) node.getScene().getWindow();
         
         var view_main = getClass().getResource("../scene_main/View.fxml");
         var controller_main = new scene_main.Controller();

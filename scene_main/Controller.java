@@ -1,13 +1,15 @@
 package scene_main;
 
-
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import global.Global;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -31,24 +33,41 @@ public class Controller {
     @FXML
     void on_create(ActionEvent event) throws Exception {
 
-        var stage = (Stage) status.getScene().getWindow();
+        var node = (Node) event.getSource();
+        var stage = (Stage) node.getScene().getWindow();
         
         var view_create = getClass().getResource("../scene_create/View.fxml");
-        var controller_cerate = new scene_create.Controller();
+        var controller_create = new scene_create.Controller();
 
         var loader = new FXMLLoader();
         loader.setLocation(view_create);
-        loader.setController(controller_cerate);
+        loader.setController(controller_create);
 
         var scene = new Scene(loader.load());
 
         stage.setScene(scene);
         stage.show();
 
+
+
     }
 
     @FXML
-    void on_delete(ActionEvent event) {
+    void on_delete(ActionEvent event) throws Exception {
+       var node = (Node) event.getSource();
+        var stage = (Stage) node.getScene().getWindow();
+        
+        var view_delete = getClass().getResource("../scene_delete/View.fxml");
+        var controller_delete = new scene_delete.Controller();
+
+        var loader = new FXMLLoader();
+        loader.setLocation(view_delete);
+        loader.setController(controller_delete);
+
+        var scene = new Scene(loader.load());
+
+        stage.setScene(scene);
+        stage.show();
 
     }
 
@@ -60,17 +79,13 @@ public class Controller {
 
         var data = new ArrayList<String>();
         // var selected = new file(selected.toURI());
-        
-
         for (var line: Files.readAllLines(selected.toPath())){
             data.add(line);
         }
-        listview.getItems().addAll(data);
+        // listview.getItems().addAll(data);
+        Global.list = data;
 
-        // for(var item: data){
-        //     System.out.println(item);
-        // }
-        
+        listview.getItems().addAll(Global.list);
         
     }
 
@@ -85,7 +100,7 @@ public class Controller {
         // data.add("Apple");
         // data.add("Banana");
         // data.add("Orange");
-
+        listview.getItems().addAll(Global.list);
         // listview.getItems().addAll(data);
 
     }
