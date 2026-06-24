@@ -60,7 +60,7 @@ public class Controller {
 
 
         var selected_index = listview.getSelectionModel().getSelectedIndex();
-        System.out.println("seleted" + selected_index);
+        // System.out.println("seleted" + selected_index);
         if(selected_index == -1){
             return;
         }
